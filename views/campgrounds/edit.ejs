@@ -1,0 +1,221 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+  <h1 class="text-center">Edit Campground</h1>
+  <div class="col-md-6 offset-md-3">
+    <form
+      action="/campgrounds/<%=campground._id%>?_method=PUT"
+      method="POST"
+      novalidate
+      class="validated-form"
+      enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="name">Facility Name</label>
+        <input
+          class="form-control"
+          type="text"
+          id="name"
+          name="campground[name]"
+          value="<%=campground.name %>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="hf_code">HMIS code</label>
+        <input
+          class="form-control"
+          type="text"
+          id="hf_code"
+          name="campground[hf_code]"
+          value="<%=campground.hf_code %>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="campground[location]"
+          value="<%=campground.location %>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="province">Province</label>
+        <input
+          class="form-control"
+          type="text"
+          id="province"
+          name="campground[province]"
+          value="<%=campground.province %>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="district">District</label>
+        <input
+          class="form-control"
+          type="text"
+          id="district"
+          name="campground[district]"
+          value="<%=campground.district %>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="facility_type">Facility Type</label>
+          <input
+            type="text"
+            class="form-control"
+            id="facility_type"
+            name="campground[facility_type]"
+            value="<%=campground.facility_type%>"
+            required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="bed_size">Bed Size</label>
+        <input
+          class="form-control"
+          type="number"
+          id="bed_size"
+          name="campground[bed_size]"
+          value="<%= campground.bed_size%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="opd">OPD Attendance (av/year)</label>
+        <input
+          class="form-control"
+          type="number"
+          id="opd"
+          name="campground[opd]"
+          value="<%= campground.opd%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="em">A&E (av./year)</label>
+        <input
+          class="form-control"
+          type="number"
+          id="em"
+          name="campground[em]"
+          value="<%= campground.em%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="ipdadmis">IPD Admissions (av.year)</label>
+        <input
+          class="form-control"
+          type="number"
+          id="ipdadmis"
+          name="campground[ipdadmis]"
+          value="<%= campground.ipdadmis%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="ipdlos">Length-of-Stay (LoS) av.days/bed</label>
+        <input
+          class="form-control"
+          type="number"
+          id="ipdlos"
+          name="campground[ipdlos]"
+          value="<%= campground.ipdlos%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="surgmin">Minor Surgeries</label>
+        <input
+          class="form-control"
+          type="number"
+          id="surgmin"
+          name="campground[surgmin]"
+          value="<%= campground.surgmin%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="surgmaj">Major Surgeries</label>
+        <input
+          class="form-control"
+          type="number"
+          id="surgmaj"
+          name="campground[surgmaj]"
+          value="<%= campground.surgmaj%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="referral">Referrals</label>
+        <input
+          class="form-control"
+          type="number"
+          id="referral"
+          name="campground[referral]"
+          value="<%= campground.referral%>"
+          required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      
+      <br>
+      <hr>
+      <br>
+      
+      <div class="mb-3">
+        <div class="form-file custom-file">
+          <label class="form-label" for="image">Images</label>
+          <input
+            type="file"
+            class="form-file-input"
+            id="image"
+            name="image"
+            multiple
+          />
+          <label class="form-file-label" for="image">
+            <span class="form-file-text custom-file-label"
+              >Add more image(s)...</span
+            >
+            <span class="form-file-button">Browse</span>
+          </label>
+        </div>
+      </div>
+
+
+
+      <div class="mb-3">
+        <% campground.images.forEach(function(img, i) { %>
+
+        <img src="<%=img.thumbnail %>" class="img-thumbnail" alt="" />
+        <div class="form-check-inline">
+          <input
+            type="checkbox"
+            id="image-<%=i%>"
+            name="deleteImages[]"
+            value="<%=img.filename%>"
+          />
+        </div>
+        <label for="image-<%=i%>">Delete?</label>
+        <% })%>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-info">Update Site</button>
+      </div>
+    </form>
+    <a href="/campgrounds/<%= campground._id%>">Back To Site</a>
+  </div>
+</div>
+<br><br>

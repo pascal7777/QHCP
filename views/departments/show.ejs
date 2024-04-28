@@ -1,0 +1,262 @@
+<% layout('layouts/boilerplate')%>
+    
+<div class="row">
+    <div class="col-sm-12">
+       
+            <h2 style="font-size: 2em">Department:      <%= department.deptName%> (<%= department.room%>)</h2>
+            <h3 style="font-size: 1.5em">Facility:     <%= department.campground.name%>  <%= department.campground.facility_type%></h3>
+
+            <div class="col-sm-6; mt-3; mb-3" style=" line-height:1.0">
+                <span style="color:rgb(119, 119, 121); font-size: 0.8em"> Submitted: <%= department.author.username%>
+                <br><em>On: <%= department.createdAt.toDateString()%></em>
+                <% if( (department.createdAt - Date.now())/604800000 <= -1)      {%>
+                    (<%= - Math.floor( (department.createdAt - Date.now())/1209600000)%> week(s) ago)
+                    <% } %> 
+                </span>
+        </div>
+      
+<br>
+               <div class="table-responsive">
+                <table class="table" ; id="asset">
+                    <h3><span style="color:rgb(3, 103, 14)">Equipment in use (<%=department.assets.length%>)</span></h3>
+                      <thead>
+                          <tr>
+                        <th onclick="sortTable(0)">
+                        <span style="color:rgb(3, 103, 14)">  Name</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)"> Manufacturer</span>
+                        </th>
+                        <th>
+                            <span style="color:rgb(3, 103, 14)">Country</span>
+                            </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)"> Model</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)"> Serial number</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)">Year Manufacture</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)">Funding source</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)"> Date Installed</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)">Supplier</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(3, 103, 14)">Last Maintenance</span>
+                        </th>
+                        <th>
+                          <span style="color:rgb(3, 103, 14)">Due Maintenance</span>
+                          </th>
+                        </tr>
+                      </thead>
+          
+                      <tbody>
+                            <% for (let asset of department.assets){%>  
+                            <td>   
+                            <%=asset.name%>
+                            </td>
+                            <td>
+                            <%=asset.manufacturer%>
+                            </td>
+                            <td>
+                            <%=asset.country%>
+                            </td>
+                            <td>
+                            <%=asset.model%>
+                            </td>
+                            <td>
+                            <%=asset.serial%>
+                            </td>
+                            <td>
+                            <%=asset.mfYear%>
+                            </td>
+                            <td>
+                            <%=asset.fund%>
+                            </td>
+                            <td>
+                            <%=asset.installDate.toDateString()%>
+                            </td>
+                            <td>
+                            <%=asset.supplier%>
+                            </td>
+                            <td>
+                            <%=asset.lastMai.toDateString()%>
+                            </td>
+                            <td>
+                              <%=asset.nextMai.toDateString()%>
+                              </td>
+                           
+                    </tbody>  
+                  <% }%>  
+              </table>  
+
+             
+              <% if( currentUser && department.author.equals(currentUser._id)) {%>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted">
+                <p><a class="btn btn-success btn-hover-bg-tint-amount:50% btn-hover-border-shade-amount:90%" href="/departments/<%=department._id%>/assets/new">Add Equipment</a> </p> 
+                </li>
+                </ul>
+                <% } %>
+
+
+<br>
+              <div class="table-responsive">
+                <table class="table" ; id="malasset">
+                    <h3><span style="color:rgb(129, 81, 3)">Equipment malfunctioning or broken (<%=department.malassets.length%>)</span></h3>
+                      <thead>
+                          <tr>
+                        <th onclick="sortTable(0)">
+                        <span style="color:rgb(129, 81, 3)">Name</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Manufacturer</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Model</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Serial number</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Year Manufacture</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Date Installed</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Supplier</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Funding source</span>
+                        </th>
+                        <th>
+                        <span style="color:rgb(129, 81, 3)">Not working since</span>
+                        </th>
+                        <th>
+                            <span style="color:rgb(129, 81, 3)">Scrap Y/N</span>
+                            </th>
+                          </tr>
+                      </thead>
+          
+                      <tbody>
+                            <% for (let malasset of department.malassets){%>  
+                            <td>   
+                            <%=malasset.name%>
+                            </td>
+                            <td>
+                            <%=malasset.manufacturer%>
+                            </td>
+                            <td>
+                            <%=malasset.model%>
+                            </td>
+                            <td>
+                            <%=malasset.serial%>
+                            </td>
+                            <td>
+                            <%=malasset.mfYear%>
+                            </td>
+                            <td>
+                            <%=malasset.installDate.toDateString()%>
+                            </td>
+                            <td>
+                            <%=malasset.supplier%>
+                            </td>
+                            <td>
+                            <%=malasset.fund%>
+                            </td>
+                            <td>
+                            <%= malasset.malSince.getMonth()%> / <%= malasset.malSince.getFullYear()%> <br> (<%= moment(malasset.malSince).fromNow() %>)
+                            </td>
+                            <td>
+                            <%=malasset.scrap%>
+                            </td>
+                    </tbody>  
+                  <% }%>  
+              </table> 
+
+              <% if( currentUser && department.author.equals(currentUser._id)) {%>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted">
+                <p><a class="btn btn-warning btn-hover-bg-tint-amount:50% btn-hover-border-shade-amount:90%" href="/departments/<%=department._id%>/malassets/new">Add Equipment</a> </p> 
+                </li>
+                </ul>
+                <% } %>
+
+              <br>
+              <div class="table-responsive">
+                <table class="table" ; id="misasset">
+                    <h3><span style="color:#3B71CA">Equipment missing (<%=department.misassets.length%>)</span></h3>
+                      <thead>
+                          <tr>
+                            <th onclick="sortTable(0)">
+                            <span style="color:#3B71CA">
+                            Name</span>
+                            </th>
+                            <th>
+                                <span style="color:#3B71CA">
+                            Manufacturer (example)</span>
+                            </th>
+                            <th>
+                            <span style="color:#3B71CA">
+                            Model (example)</span>
+                            </th>
+                            <th>
+                            <span style="color:#3B71CA">
+                            Website (example)</span>
+                            </th>
+                            <th>
+                            <span style="color:#3B71CA">
+                            Unit cost (indication)</span>
+                            </th>
+                            <th>
+                            <span style="color:#3B71CA">
+                            Quantity needed</span>
+                            </th>
+                           
+                          </tr>
+                      </thead>
+          
+                      <tbody>
+                            <% for (let misasset of department.misassets){%>  
+                            <td>   
+                            <%=misasset.name%>
+                            </td>
+                            <td>
+                            <%=misasset.manufacturer%>
+                            </td>
+                            <td>
+                            <%=misasset.model%>
+                            </td>
+                            <td>
+                            <%=misasset.url%>
+                            </td>
+                            <td>
+                            <%=misasset.cost%>
+                            </td>
+                            <td>
+                            <%=misasset.quantity%>
+                            </td>
+                           
+                    </tbody>  
+                  <% }%>  
+              </table>  
+
+              <% if( currentUser && department.author.equals(currentUser._id)) {%>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item text-muted">
+                <p><a class="btn btn-primary btn-hover-bg-tint-amount:50% btn-hover-border-shade-amount:90%" href="/departments/<%=department._id%>/misassets/new">Add Equipment</a> </p> 
+                </li>
+                </ul>
+                <% } %>
+               
+            </div> 
+        </div>  
+   

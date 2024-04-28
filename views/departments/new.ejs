@@ -1,0 +1,75 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row">
+ 
+            <h1 class="text-center">Select Department that is in Use</h1>
+
+            <h2 class="text-center">Facility: <%= campground.name%>  </h2>
+      
+                      
+<form action="/campgrounds/<%=campground._id%>/departments" method="POST" novalidate class = "validated-form">
+
+      <div class="mb-3">
+        <label class="form-label" for="deptName" class="form-label">Department name</label>
+        <input class="form-control" list="DeptName" name="department[deptName]" id="deptName" placeholder="Type to search...">
+        <datalist id="DeptName">
+            <option value="Accident and Emergency room (access to small surgery room; pharmacy dispensing, laboratory, maternity, radiology)">
+            <option value="Blood bank">
+            <option value="Clinical lab (chemical, serology, hematology)">
+            <option value="Delivery room/Obstetrics">
+            <option value="Dental Room">
+            <option value="GBV/Female examination room">
+            <option value="Generator/solar power room">
+            <option value="Hemodialysis">
+            <option value="ICU pediatrics/neonatology (access to OT/Theatre)">
+            <option value="ICU/CCU Adult (access to OT/Theatre)">
+            <option value="Imaging department (MRI, CT, C-arm, Xray (dental/panorama, angiography, fluoroscopy, mammography) and Ultrasound scanners)">
+            <option value="IPC station (chlorine)">
+            <option value="Laundry department (access to sterilisation department)">
+            <option value="Maternity ward (access to OT)">
+            <option value="Maternity/Delivery room">
+            <option value="Microbiology lab (bacteriology, histology, pathology)">
+            <option value="Minor (small) surgery room">
+            <option value="Morgue">
+            <option value="Neonatal room">
+            <option value="OPD department (access to pharmacy dispensing; examination rooms, radiology, labs)">
+            <option value="Ophthalmology">
+            <option value="OT/Theatre (access to recovery room; ICU, disinfection/sanitation, blood bank, radiology, waste and laundry)">
+            <option value="Oxygen plant/store">
+            <option value="Patient recovery ward/room">
+            <option value="Patient ward(s) (access to laboratory, laundry)">
+            <option value="Pharmacy dispensing/store/cold chain">
+            <option value="Scrub station area (access to OT/Theatre)">
+            <option value="Sterilization department (access to OT/Theatre, ICU, dental, minor surgery and maternal/delivery room)">
+            <option value="Waste disposal (off-site: municipal or contractor on-site: landfill/burn pit/incinerator/other)">
+            <option value="Waste hold">
+            <option value="Water treatment plant">
+            <option value="Workshop (Engineers/technicians)">
+            </datalist>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="room"># Rooms</label>
+        <input
+          class="form-control"
+          type="number"
+          id="room"
+          name="department[room]"
+          required>
+      </div>
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+<br>  
+
+
+
+
+<button class="btn btn-primary">Add Department</button>
+
+
+</form>
+
+
+
+

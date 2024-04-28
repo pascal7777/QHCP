@@ -1,0 +1,275 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="row">
+ 
+            <h1 class="text-center">Select Equipment</h1>
+
+            <h2 class="text-center">Department: <%= department.deptName%> <br><%= department.campground.name%>  </h2>
+           
+           
+
+<form action="/departments/<%=department._id%>/assets" method="POST" novalidate class = "validated-form">
+
+      <div class="mb-3">
+        <label class="form-label" for="name" class="form-label">Equipment name</label>
+        <input class="form-control" list="AssetName" name="asset[name]" id="name" placeholder="Type to search...">
+        <datalist id="AssetName">
+                <option value="Air compressor (pump)">
+                <option value="Anesthesia machine">
+                <option value="APTT coagulation analyzer">
+                <option value="Auto Lensmeters/Lensometers">
+                <option value="Auto Refractometer (visual)">
+                <option value="Autoclave/sterilizer, large (50-75L), floor">
+                <option value="Autoclave/sterilizer, small (20-40L), table top">
+                <option value="Bilirubinometer, non-invasive">
+                <option value="Bio Safety Cabinet">
+                <option value="Blood culture system, automated">
+                <option value="Blood Gas Analyzer">
+                <option value="Blood Pressure Monitor (NIBP)">
+                <option value="Bone Saw (electric)">
+                <option value="C-Arm (Surgery), mobile">
+                <option value="Capillary electrophoresis (CE) or HPLC (HbA HbA2 HbF)">
+                <option value="Central O2 distribution system (installation Manifold/alarm, pipes outlets/filters)">
+                <option value="Chemistry Analyzer, automated">
+                <option value="Chlorine generator (IPC)">
+                <option value="Colonoscopy system (tower) w/ fiberscope">
+                <option value="CPAP ">
+                <option value="CT scan">
+                <option value="Defibrillator (AED)">
+                <option value="Delivery table">
+                <option value="Dental Chair">
+                <option value="Dental Unit">
+                <option value="Dental X-ray">
+                <option value="Dental X-ray, digital">
+                <option value="Dental X-ray, panoramic">
+                <option value="Digital Xray, portable">
+                <option value="Doppler Monitor ">
+                <option value="DSA fluorescence angiography system">
+                <option value="ECG, 12 channel">
+                <option value="Echo Scan">
+                <option value="Electical Surgery (Electrocautery)">
+                <option value="Electrolyte analyser (Na+, K, Cl in serum, urine)">
+                <option value="Electrolyte Analyzer">
+                <option value="ELISA Analyzer">
+                <option value="Endocsope (ENT)">
+                <option value="Examination Lamp (LED)">
+                <option value="Flow Cytometer">
+                <option value="Freezer (non-PQS)">
+                <option value="Freezer (PQS)">
+                <option value="Gen Xpert">
+                <option value="Haematology analyzer (18 parameters)">
+                <option value="Haematology analyzer (24 parameters)">
+                <option value="Halogen Curing Light ">
+                <option value="HbA1c Analyzer">
+                <option value="Hematocrit Centrifuge">
+                <option value="Hemodialysis unit">
+                <option value="Hot Plate">
+                <option value="ICU bed, electric"></option>
+                <option value="Incubator infant/baby">
+                <option value="Infant Radiant Warmer">
+                <option value="Infusion Pump">
+                <option value="Kidney Stone Ultrasound (Lithography)">
+                <option value="Lab Centrifuge, bench top">
+                <option value="Lab incubator">
+                <option value="Laparoscopy tower">
+                <option value="Laparoscopy, laser (lithotripsy) machine)">
+                <option value="Laryngoscope set">
+                <option value="Laundry washing Machine">
+                <option value="Lens Edger Machine">
+                <option value="Magnetic Stirrer">
+                <option value="Mammograpjy system">
+                <option value="Maternity/delivery bed">
+                <option value="Microcentrifuge">
+                <option value="Microscope LED">
+                <option value="Microscope Slit lamp">
+                <option value="Microscope, binocular">
+                <option value="Mini Centrifuge">
+                <option value="Nebulizer">
+                <option value="Nebulizer w/ aircompressor">
+                <option value="Operating Lamp (LED), ceiling mounted">
+                <option value="Operation table, hydraulic">
+                <option value="Oto/Ophthalmoscope (Examination Set)">
+                <option value="Outside Incinerator">
+                <option value="Oxygen Concentrator">
+                <option value="Patient bed">
+                <option value="Patient Monitor, multiparameter">
+                <option value="PCR, automated">
+                <option value="Photography unit">
+                <option value="Pulse Oximeter">
+                <option value="Refrigerator (non-PQS)">
+                <option value="Refrigerator (PQS)">
+                <option value="Refrigerator/freezer (non-PQS)">
+                <option value="Refrigerator/freezer (PQS)">
+                <option value="Scale Adolescent Adult Patient">
+                <option value="Scale Pediatrics">
+                <option value="Scale,infant/baby (15-20kg)">
+                <option value="Slit Lamp">
+                <option value="Sterlizer dry heat (oven)">
+                <option value="Sterlizer pressure cooker (20-40L)">
+                <option value="Stethoscope set">
+                <option value="Stool Analyzer, automated">
+                <option value="Suction machine (electrical), portable">
+                <option value="Suction, manual">
+                <option value="Surgeon Magnifying glasses">
+                <option value="Surgical aspirator unit">
+                <option value="Surgical tool set">
+                <option value="Syringe pump, automatic">
+                <option value="Themometer, digital">
+                <option value="Thyroid test analyzer (TSH, T3, T4)">
+                <option value="Tumble dryer (Laundry)">
+                <option value="Ultrafreezer (non-PQS)">
+                <option value="Ultrafreezer (PQS)">
+                <option value="Ultrasound 4D">
+                <option value="Ultrasound, mobile">
+                <option value="Urine Analyzer">
+                <option value="Vacuum extraction unit">
+                <option value="Ventilator ">
+                <option value="Voltage Stabilizer">
+                <option value="Waste disposal machine (Sterilwave)">
+                <option value="Water Bath">
+                <option value="Water Purification unit">
+                <option value="Water Still (Distiller)">
+                <option value="X-ray machine">
+                <option value="Other (describe)">
+            </datalist>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="manufacturer">Manufacturer</label>
+        <input
+          class="form-control"
+          type="text"
+          id="manufacturer"
+          name="asset[manufacturer]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="country">Country Manufacture (Origin)</label>
+        <input
+          class="form-control"
+          type="text"
+          id="country"
+          name="asset[country]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="model">Model</label>
+        <input
+          class="form-control"
+          type="text"
+          id="model"
+          name="asset[model]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="serial">Serial Number</label>
+        <input
+          class="form-control"
+          type="text"
+          id="serial"
+          name="asset[serial]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="idNumber">ID Number</label>
+        <input
+          class="form-control"
+          type="text"
+          id="idNumber"
+          name="asset[idNumber]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="mfYear">Manufacture Year</label>
+        <input
+          class="form-control"
+          type="text"
+          id="mfYear"
+          name="asset[mfYear]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="installDate">Installation Date</label>
+        <input
+          class="form-control"
+          type="date"
+          id="installDate"
+          name="asset[installDate]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="supplier">Supplier</label>
+        <input
+          class="form-control"
+          type="text"
+          id="supplier"
+          name="asset[supplier]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="lastMai">Last Maintenance (date)</label>
+        <input
+          class="form-control"
+          type="text"
+          id="lastMai"
+          name="asset[lastMai]"
+          required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="nextMai">Next Maintenance (Due date)</label>
+        <input
+          class="form-control"
+          type="text"
+          id="nextMai"
+          name="asset[nextMai]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="fund">Funding source</label>
+        <input
+          class="form-control"
+          type="text"
+          id="fund"
+          name="asset[fund]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="manual">Manual Present Y/N</label>
+        <input
+          class="form-control"
+          type="text"
+          id="manual"
+          name="asset[manual]"
+          required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="sparePart">Spare Parts Y/N</label>
+        <input
+          class="form-control"
+          type="text"
+          id="sparePart"
+          name="asset[sparePart]"
+          required>
+      </div>
+
+
+<br>  
+<hr style="height:5px; border: 1px dashed rgb(6, 91, 251);background-color:gray">
+
+
+<br> 
+<button class="btn btn-primary">Add Equipment</button>
+
+
+</form>
