@@ -75,7 +75,7 @@ const sessionConfig = {
     name: 'vientiane',
     secret,
     resave: false,
-    saveUnitialized: true,
+    saveUninitialized: true,
     cookie: {
         httpOnly: true,
         // secure: true,
